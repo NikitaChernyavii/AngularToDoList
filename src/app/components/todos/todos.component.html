@@ -1,0 +1,22 @@
+<div class="todos">
+    <div class="todo-container">
+        <!-- Форма для добавления задачи -->
+        <form (submit)="addTodo()">
+            <input 
+                type="text"
+                name="InputTodo"
+                placeholder="Enter ToDo..."
+                class="todo-input"
+                [(ngModel)]="InputTodo"
+            />
+            <input type="submit" value="Add ToDo" class="todo-submit"/>
+        </form>
+
+        <!-- Список задач -->
+        <div *ngFor="let todo of todos; let i = index;" class="todo {{ todo.completed ? 'done' : ''}}">
+            <div class="id">{{i + 1}}</div> <!-- Индекс задачи (начинаем с 1) -->
+            <div class="content" (click)="toggleDone(i)">{{todo.content}}</div>
+            <button class="delete" (click)="deleteTodo(i)">Remove</button>
+        </div>
+    </div>
+</div>
